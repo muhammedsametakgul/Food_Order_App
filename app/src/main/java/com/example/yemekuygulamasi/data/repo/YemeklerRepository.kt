@@ -16,6 +16,7 @@ class YemeklerRepository {
     var sepetListesi : MutableLiveData<List<Sepet>>
     var ydao:YemekDao
     private lateinit var bindingDetay:FragmentDetayBinding
+    var sayiAdet=MutableLiveData<String>()
 
 
     init {
@@ -23,6 +24,7 @@ class YemeklerRepository {
         yemeklerListesi = MutableLiveData()
         sepetListesi = MutableLiveData()
 
+        sayiAdet=MutableLiveData("1")
 
     }
 
@@ -112,6 +114,25 @@ class YemeklerRepository {
     })
 
     }
+
+      fun arttir(){
+        var sayi=sayiAdet.value.toString().toInt()
+        sayi+=1
+        sayiAdet.value=sayi.toString()
+    }
+    fun azalt(){
+        var sayi=sayiAdet.value.toString().toInt()
+        if(sayiAdet.value.toString().toInt() >1){
+            sayi-=1
+            sayiAdet.value=sayi.toString()
+        }else{
+            sayiAdet.value="1"
+        }
+    }
+    fun adetSayiGetir():MutableLiveData<String>{
+        return  sayiAdet
+    }
+
 
 
 

@@ -10,24 +10,16 @@ class DetayViewmodel:ViewModel() {
     val yrepo =YemeklerRepository()
     var sayiVM=MutableLiveData<String>()
     init {
-        sayiVM=MutableLiveData("1")
+        sayiVM=yrepo.adetSayiGetir()
     }
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:Int,kullanici_adi:String){
       yrepo.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet,kullanici_adi)
     }
     fun arttir(){
-        var sayi=sayiVM.value.toString().toInt()
-        sayi+=1
-        sayiVM.value=sayi.toString()
+        yrepo.arttir()
     }
     fun azalt(){
-        var sayi=sayiVM.value.toString().toInt()
-        if(sayiVM.value.toString().toInt() >1){
-            sayi-=1
-            sayiVM.value=sayi.toString()
-        }else{
-            sayiVM.value="1"
-        }
+        yrepo.azalt()
     }
 
 

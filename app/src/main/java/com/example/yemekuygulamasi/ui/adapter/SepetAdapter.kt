@@ -12,6 +12,7 @@ import com.example.yemekuygulamasi.databinding.RvAnasayfaItemBinding
 import com.example.yemekuygulamasi.databinding.RvSepetItemBinding
 import com.example.yemekuygulamasi.ui.viewmodel.SepetViewmodel
 import com.google.android.material.snackbar.Snackbar
+import com.squareup.picasso.Picasso
 
 class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: SepetViewmodel):RecyclerView.Adapter<SepetAdapter.ViewHolder>() {
     inner class ViewHolder(var binding:RvSepetItemBinding):RecyclerView.ViewHolder(binding.root)
@@ -31,17 +32,25 @@ class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: Sepe
      val sepetYemek=list.get(position)
         val t = holder.binding
         t.sepetNesnesi = sepetYemek
+        val url="http://kasimadalan.pe.hu/yemekler/resimler/${sepetYemek.yemek_resim_adi}"
 
+        if(sepetYemek.yemek_resim_adi !=null){
+            Picasso.get().load(url).into(t.imageViewSepetResim)
+        }else{
+            Log.e("Resim","HAta")
+        }
         t.textViewAdet.text=sepetYemek.yemek_siparis_adet.toString()
+        var adet=sepetYemek.yemek_siparis_adet.toString().toInt()
         t.textViewSepetYemekAd.text=sepetYemek.yemek_adi
         t.textViewSepetFiyat.text=sepetYemek.yemek_fiyat.toString()
+
         t.imageViewSil.setOnClickListener {
-            Snackbar.make(it," silinsin mi?",Snackbar.LENGTH_LONG)
-                .setAction("EVET"){
-                    sil(sepetYemek.sepet_yemek_id,sepetYemek.kullanici_adi)
-                }.show()
 
-
+              Snackbar.make(it,"${sepetYemek.yemek_adi} silinsin mi?",Snackbar.LENGTH_LONG)
+                  .setAction("EVET"){
+                      for (i in 1..adet){
+                      sil(sepetYemek.sepet_yemek_id,"Samet")}
+                  }.show()
         }
     }
     fun sil(sepet_yemek_id:Int,kullanici_adi:String){

@@ -34,6 +34,11 @@ class DetayFragment : Fragment() {
             var fiyat = gelenYemek.yemek_fiyat
             var sepetFiyat=(it.toString().toInt()) * fiyat
             binding.buttonSepet.text="Sepete Ekle        ${sepetFiyat} ₺"
+
+            var adet =it.toString().toInt()
+            binding.buttonSepet.setOnClickListener {
+                sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,adet,"samet")
+            }
         }
 
         val url="http://kasimadalan.pe.hu/yemekler/resimler/${gelenYemek.yemek_resim_adi}"
@@ -41,9 +46,7 @@ class DetayFragment : Fragment() {
         binding.textViewDetayFiyat.text="${gelenYemek.yemek_fiyat.toString()} ₺"
         binding.buttonSepet.text="Sepete Ekle"
 
-        binding.buttonSepet.setOnClickListener {
-            sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,1,"samet")
-        }
+
 
 
 
