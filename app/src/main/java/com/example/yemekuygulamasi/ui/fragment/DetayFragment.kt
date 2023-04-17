@@ -19,6 +19,7 @@ import com.squareup.picasso.Picasso
 class DetayFragment : Fragment() {
     private  lateinit var binding:FragmentDetayBinding
     private lateinit var viewModel: DetayViewmodel
+    var sayi = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,14 +29,23 @@ class DetayFragment : Fragment() {
         val bundle:DetayFragmentArgs by navArgs()
         val gelenYemek = bundle.yemek
         binding.yemekNesnesi  = gelenYemek
+        viewModel.sayiVM.observe(viewLifecycleOwner){
+            binding.adetSayisi=it
+            var fiyat = gelenYemek.yemek_fiyat
+            var sepetFiyat=(it.toString().toInt()) * fiyat
+            binding.buttonSepet.text="Sepete Ekle        ${sepetFiyat} ₺"
+        }
 
         val url="http://kasimadalan.pe.hu/yemekler/resimler/${gelenYemek.yemek_resim_adi}"
         gorselGoster(url)
-        binding.textViewDetayFiyat.text=gelenYemek.yemek_fiyat.toString()
+        binding.textViewDetayFiyat.text="${gelenYemek.yemek_fiyat.toString()} ₺"
+        binding.buttonSepet.text="Sepete Ekle"
 
         binding.buttonSepet.setOnClickListener {
             sepeteEkle(gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat,1,"samet")
         }
+
+
 
         return binding.root
     }
@@ -54,6 +64,14 @@ class DetayFragment : Fragment() {
     }
     fun gorselGoster(url:String){
         Picasso.get().load(url).into(binding.imageViewDetayFoto)
+
+    }
+    fun arttir(){
+        viewModel.arttir()
+
+    }
+    fun azalt(){
+        viewModel.azalt()
 
     }
 

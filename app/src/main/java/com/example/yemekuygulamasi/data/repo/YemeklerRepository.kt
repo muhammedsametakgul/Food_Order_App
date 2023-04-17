@@ -17,12 +17,15 @@ class YemeklerRepository {
     var ydao:YemekDao
     private lateinit var bindingDetay:FragmentDetayBinding
 
+
     init {
         ydao =ApiUtils.getYemeklerDao()
         yemeklerListesi = MutableLiveData()
         sepetListesi = MutableLiveData()
 
+
     }
+
     fun yemekleriGetir() : MutableLiveData<List<Yemekler>>{
         return  yemeklerListesi
     }

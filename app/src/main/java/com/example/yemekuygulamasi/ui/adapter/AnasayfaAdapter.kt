@@ -32,7 +32,7 @@ class AnasayfaAdapter(var mContext: Context, var liste:List<Yemekler> ):Recycler
         val gelenYemek=liste.get(position)
         val t =holder.binding
         t.yemekNesnesi=gelenYemek
-        t.textViewFiyat.text=gelenYemek.yemek_fiyat.toString()
+        t.textViewFiyat.text="${gelenYemek.yemek_fiyat.toString()} ₺"
         t.cardAna.setOnClickListener {
                 val gecis = AnasayfaFragmentDirections.toDetay(yemek = gelenYemek)
                 Navigation.findNavController(it).navigate(gecis)
