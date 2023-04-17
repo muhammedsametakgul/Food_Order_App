@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main_activity_nav"
+    app:startDestination="@id/anasayfaFragment">
+
+    <fragment
+        android:id="@+id/anasayfaFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.AnasayfaFragment"
+        android:label="AnasayfaFragment" >
+        <action
+            android:id="@+id/toDetay"
+            app:destination="@id/detayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detayFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.DetayFragment"
+        android:label="DetayFragment" >
+        <argument
+            android:name="yemek"
+            app:argType="com.example.yemekuygulamasi.data.entitiy.Yemekler" />
+        <action
+            android:id="@+id/toSepet"
+            app:destination="@id/sepetFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sepetFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.SepetFragment"
+        android:label="SepetFragment" />
+</navigation>
