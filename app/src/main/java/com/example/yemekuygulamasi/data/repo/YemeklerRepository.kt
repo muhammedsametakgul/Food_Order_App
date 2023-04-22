@@ -18,19 +18,20 @@ class YemeklerRepository {
     private lateinit var bindingDetay:FragmentDetayBinding
     var sayiAdet=MutableLiveData<String>()
 
-
     init {
         ydao =ApiUtils.getYemeklerDao()
         yemeklerListesi = MutableLiveData()
         sepetListesi = MutableLiveData()
-
         sayiAdet=MutableLiveData("1")
 
     }
 
+
     fun yemekleriGetir() : MutableLiveData<List<Yemekler>>{
         return  yemeklerListesi
     }
+
+
 
     fun sepetItemGetir() : MutableLiveData<List<Sepet>>{
         return  sepetListesi
@@ -40,8 +41,7 @@ class YemeklerRepository {
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:Int,kullanici_adi:String){
         ydao.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat, yemek_siparis_adet,kullanici_adi).enqueue(object : Callback<CRUDCevap>{
             override fun onResponse(call: Call<CRUDCevap>, response: Response<CRUDCevap>) {
-                Log.e("Kayıt","Sepete Eklendi")
-                Log.e("Success",response.body()!!.success.toString())
+
                     }
 
             override fun onFailure(call: Call<CRUDCevap>, t: Throwable) {
@@ -65,46 +65,27 @@ class YemeklerRepository {
         })
     }
 
+
     fun yemekleriYukle(){
-
         ydao.tumYemekler().enqueue(object : Callback<YemekCevap>{
-            override fun onFailure(call: Call<YemekCevap>, t: Throwable) {
-            }
-
             override fun onResponse(call: Call<YemekCevap>, response: Response<YemekCevap>) {
                 val liste =response.body()!!.yemekler
                 yemeklerListesi.value=liste
+
             }
+            override fun onFailure(call: Call<YemekCevap>, t: Throwable) {
+            }
+
+
         })
     }
 
 
     fun sepetGetir(kullanici_adi:String){
-        var hashMap = HashMap<String,Sepet>()
-        val other: List<Sepet> = emptyList()
-    ydao.sepetGetir(kullanici_adi).enqueue(object : Callback<SepetCevap>{
+         ydao.sepetGetir(kullanici_adi).enqueue(object : Callback<SepetCevap>{
         override fun onResponse(call: Call<SepetCevap>, response: Response<SepetCevap>) {
-            try {
-
-                val liste = response.body()?.sepet
-                //Log.e("Liste",response.body()!!.sepet.toString())
-                if (liste != null) {
-                    for (i in liste){
-                        if (hashMap.containsKey(i.yemek_adi)){
-                            hashMap.get(i.yemek_adi)!!.yemek_siparis_adet += i.yemek_siparis_adet
-
-
-                        }else{
-                            hashMap.put(i.yemek_adi,i)
-                        }
-
-                    }
-                }
-                sepetListesi.value = hashMap.values.toList()
-                //Log.e("tumsepet", "${hashMap.values.toList()}")
-            }catch (e:Exception){
-                Log.e("tumsepet",e.stackTrace.toString())
-            }
+            val liste = response.body()!!.sepet
+            sepetListesi.value = liste
         }
 
         override fun onFailure(call: Call<SepetCevap>, t: Throwable) {
@@ -133,7 +114,29 @@ class YemeklerRepository {
         return  sayiAdet
     }
 
+    fun artanFiyat(){
+        ydao.tumYemekler().enqueue(object :Callback<YemekCevap>{
+            override fun onResponse(call: Call<YemekCevap>?, response: Response<YemekCevap>){
+                val menu = response.body()!!.yemekler
 
+                val artanFiyat = menu.sortedWith(compareBy { it.yemek_fiyat })
+                yemeklerListesi.value = artanFiyat
+            }
+            override fun onFailure(call: Call<YemekCevap>?, t: Throwable?) {}
+        })
+    }
+
+    fun azalanFiyat(){
+        ydao.tumYemekler().enqueue(object :Callback<YemekCevap>{
+            override fun onResponse(call: Call<YemekCevap>?, response: Response<YemekCevap>){
+                val menu = response.body()!!.yemekler
+
+                val azalanFiyat = menu.sortedWith(compareBy { it.yemek_fiyat }).reversed()
+                yemeklerListesi.value = azalanFiyat
+            }
+            override fun onFailure(call: Call<YemekCevap>?, t: Throwable?) {}
+        })
+    }
 
 
 }

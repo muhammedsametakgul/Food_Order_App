@@ -29,7 +29,7 @@ class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: Sepe
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-     val sepetYemek=list.get(position)
+        val sepetYemek=list.get(position)
         val t = holder.binding
         t.sepetNesnesi = sepetYemek
         val url="http://kasimadalan.pe.hu/yemekler/resimler/${sepetYemek.yemek_resim_adi}"
@@ -39,17 +39,18 @@ class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: Sepe
         }else{
             Log.e("Resim","HAta")
         }
-        t.textViewAdet.text=sepetYemek.yemek_siparis_adet.toString()
+        t.textViewAdet.text="${sepetYemek.yemek_siparis_adet.toString()} adet"
         var adet=sepetYemek.yemek_siparis_adet.toString().toInt()
         t.textViewSepetYemekAd.text=sepetYemek.yemek_adi
-        t.textViewSepetFiyat.text=sepetYemek.yemek_fiyat.toString()
+        t.textViewSepetFiyat.text="${sepetYemek.yemek_fiyat.toString()} ₺"
+
 
         t.imageViewSil.setOnClickListener {
 
               Snackbar.make(it,"${sepetYemek.yemek_adi} silinsin mi?",Snackbar.LENGTH_LONG)
                   .setAction("EVET"){
                       for (i in 1..adet){
-                      sil(sepetYemek.sepet_yemek_id,"Samet")}
+                          sil(sepetYemek.sepet_yemek_id,"samet")}
                   }.show()
         }
     }

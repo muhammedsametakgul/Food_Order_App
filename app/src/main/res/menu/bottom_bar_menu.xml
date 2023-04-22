@@ -6,6 +6,15 @@
         android:icon="@drawable/anasayfa_resim"
         android:title="Ana Sayfa" />
     <item
+        android:id="@+id/sa"
+        android:icon="@drawable/anasayfa_resim"
+        android:title="Ana Sayfa" />
+
+    <item
+        android:id="@+id/as"
+        android:icon="@drawable/anasayfa_resim"
+        android:title="Ana Sayfa" />
+    <item
         android:id="@+id/sepet"
         android:icon="@drawable/sepet_resim"
         android:title="Sepet" />

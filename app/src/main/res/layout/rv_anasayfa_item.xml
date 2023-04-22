@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/cardAna"
-        android:layout_margin="8dp"
+        android:layout_margin="6dp"
         >
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -24,7 +24,7 @@
 
             <ImageView
                 android:id="@+id/imageViewYemek"
-                android:layout_width="0dp"
+                android:layout_width="280dp"
                 android:layout_height="156dp"
                 android:layout_marginTop="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -37,7 +37,7 @@
                 android:id="@+id/textViewAd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="4dp"
                 android:text="@{yemekNesnesi.yemek_adi}"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -50,7 +50,7 @@
                 android:id="@+id/textViewFiyat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
+                android:layout_marginTop="4dp"
                 android:text="TextView"
                 android:textSize="20sp"
                 android:textStyle="bold"

@@ -19,19 +19,34 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:defaultNavHost="true"
-            app:layout_constraintBottom_toTopOf="@+id/bottomNavigationView"
+            app:layout_constraintBottom_toTopOf="@+id/bottombarapp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:navGraph="@navigation/main_activity_nav" />
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavigationView"
+
+        <com.google.android.material.bottomappbar.BottomAppBar
+            android:id="@+id/bottombarapp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
+
+            android:layout_gravity="bottom"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:menu="@menu/bottom_bar_menu"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent">
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottomnavigationview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                app:itemIconTint="@color/toolbar_yazi"
+                app:itemTextColor="@color/text"
+                app:menu="@menu/bottom_bar_menu" />
+        </com.google.android.material.bottomappbar.BottomAppBar>
+
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

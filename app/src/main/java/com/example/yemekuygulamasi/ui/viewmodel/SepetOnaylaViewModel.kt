@@ -1,0 +1,44 @@
+package com.example.yemekuygulamasi.ui.viewmodel
+
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import com.example.yemekuygulamasi.data.entitiy.Sepet
+import com.example.yemekuygulamasi.data.repo.YemeklerRepository
+
+class SepetOnaylaViewModel:ViewModel() {
+
+    val user="samet"
+    val yrepo= YemeklerRepository()
+    var sepetler: MutableLiveData<List<Sepet>>
+    init {
+        sepetiGetir()
+        sepetler = yrepo.sepetItemGetir()
+
+    }
+
+    fun sepetiGetir(){
+        yrepo.sepetGetir(user)
+    }
+
+    fun sepetiBosalt(){
+        val tumYemek = sepetler.value!!
+        for (i in tumYemek){
+            sepettenSil(i.sepet_yemek_id,user)
+            if (tumYemek.indexOf(i) == tumYemek.size-1){
+                sepetler.value = emptyList()
+            }
+            /*if (sepetYemekListesi.value!!.size -1 == 0){
+                sepetYemekListesi.value = emptyList()
+            }*/
+        }
+        yrepo.sepetGetir(user)
+
+    }
+    fun sepettenSil(sepet_yemek_id:Int,kullanici_adi:String){
+        yrepo.sil(sepet_yemek_id,kullanici_adi)
+        if (sepetler.value!!.size -1 == 0){
+            sepetler.value = emptyList()
+        }
+
+    }
+}

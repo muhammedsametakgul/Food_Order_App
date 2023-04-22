@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_activity_nav"
     app:startDestination="@id/anasayfaFragment">
 
@@ -22,9 +23,48 @@
         <action
             android:id="@+id/toSepet"
             app:destination="@id/sepetFragment" />
+        <action
+            android:id="@+id/toAnasayfaFromDetay"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetFragment"
         android:name="com.example.yemekuygulamasi.ui.fragment.SepetFragment"
-        android:label="SepetFragment" />
+        android:label="SepetFragment" >
+        <action
+            android:id="@+id/toSepetOnayla"
+            app:destination="@id/sepetOnaylaFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/sepetOnaylaFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.SepetOnaylaFragment"
+        android:label="SepetOnaylaFragment" >
+        <action
+            android:id="@+id/toOdeme"
+            app:destination="@id/odemeFragment" />
+        <action
+            android:id="@+id/toAnimation2"
+            app:destination="@id/animationFragment" />
+        <argument
+            android:name="sepetonay"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/odemeFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.OdemeFragment"
+        android:label="fragment_odeme"
+        tools:layout="@layout/fragment_odeme" >
+        <action
+            android:id="@+id/toAnimation1"
+            app:destination="@id/animationFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/animationFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.AnimationFragment"
+        android:label="fragment_animation"
+        tools:layout="@layout/fragment_animation" >
+        <action
+            android:id="@+id/toAnasayfaFromAnim"
+            app:destination="@id/anasayfaFragment" />
+    </fragment>
 </navigation>

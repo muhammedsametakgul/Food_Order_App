@@ -19,128 +19,82 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E8E6E6"
+
         tools:context=".ui.fragment.SepetFragment">
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvSepet"
-            android:layout_width="0dp"
-            android:layout_height="314dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            android:adapter="@{sepetAdapter}"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
             android:layout_width="0dp"
             app:title="@{sepetToolbar}"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
+            android:background="@color/toolbar"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/aclonica"
+                android:text="Sepetim"
+                android:textColor="@color/toolbar_yazi"
+                android:textSize="28sp"
+                android:textStyle="bold|italic"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="10dp" />
 
-        <LinearLayout
+        </androidx.appcompat.widget.Toolbar>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvSepet"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:adapter="@{sepetAdapter}"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout2"
+            android:layout_width="0dp"
+            android:layout_height="60dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/rvSepet">
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent">
 
-            <ScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+            <Button
+                android:id="@+id/buttonDevam"
+                android:layout_width="290dp"
+                android:layout_height="41dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginBottom="8dp"
+                android:text="Devam"
+                android:textColor="@color/toolbar_yazi"
+                android:backgroundTint="#272727"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="match_parent"
-                    android:id="@+id/scrollviewCons"
-                    android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/textViewSepetToplam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="32dp"
+                android:textSize="20sp"
 
-                    <EditText
-                        android:id="@+id/editTextTextPersonName"
-                        android:layout_width="0dp"
-                        android:layout_height="100dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginEnd="16dp"
-                        android:ems="10"
-                        android:gravity="top"
-                        android:hint="Sipariş notunuzu giriniz"
-                        android:inputType="textPersonName"
-                        android:textAlignment="inherit"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/Odeme"
-                        android:layout_margin="10dp"
-                        android:textSize="25sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/checkBox"
-                        android:text="Ödeme Seçenekleri"/>
-
-                    <RadioGroup
-                        android:id="@+id/radioGroup"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="8dp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/Odeme">
-
-                        <RadioButton
-                            android:id="@+id/radioButton3"
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:text="Nakit"
-                            />
-
-                        <RadioButton
-                            android:id="@+id/radioButton2"
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:text="Online kredi kartı"
-                            />
-
-                        <RadioButton
-                            android:id="@+id/radioButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="35dp"
-                            android:text="Kapıda kredi kartı"
-                             />
-                    </RadioGroup>
-                    <CheckBox
-                        android:id="@+id/checkBox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="16dp"
-                        android:text="Zili Çalma"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
-                    <TextView
-                        android:id="@+id/sepetTutari"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Sepet Tutarı :"
-                        android:textSize="20sp"
-                        app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
-                    <Button
-                        android:layout_width="match_parent"
-                        android:text="Sepeti Onayla"
-                        app:layout_constraintBaseline_toBottomOf="@+id/sepetTutari"
-                        android:layout_height="wrap_content"/>
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.515" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-
-            </ScrollView>
-        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

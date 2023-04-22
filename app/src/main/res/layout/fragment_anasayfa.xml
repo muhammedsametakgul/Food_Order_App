@@ -5,7 +5,7 @@
 
     <data>
         <variable
-            name="YemekAnaSayfaToolbar"
+            name="yemekTool"
             type="String" />
         <variable
             name="anasayfaFragment"
@@ -18,19 +18,36 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#E8E6E6"
         tools:context=".ui.fragment.AnasayfaFragment">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="@{YemekAnaSayfaToolbar}"
+            app:titleTextColor="@color/toolbar_yazi"
+            android:textAlignment="center"
+            android:background="@color/toolbar"
             android:layout_width="0dp"
+            app:menu="@menu/toolbar_menu"
+            app:title="@{yemekTool}"
             android:layout_height="wrap_content"
-            android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/aclonica"
+                android:text="foodies"
+                android:textColor="@color/toolbar_yazi"
+                android:textSize="28sp"
+                android:textStyle="bold|italic"
+                tools:layout_editor_absoluteX="91dp"
+                tools:layout_editor_absoluteY="10dp" />
+        </androidx.appcompat.widget.Toolbar>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvAna"
@@ -43,5 +60,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
