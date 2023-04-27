@@ -3,6 +3,7 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
     id 'com.google.gms.google-services'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -38,6 +39,8 @@ android {
     }
 }
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: "kotlin-kapt"
+apply plugin: "dagger.hilt.android.plugin"
 
 dependencies {
 
@@ -48,6 +51,7 @@ dependencies {
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
     implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.firebase:firebase-database-ktx:20.0.4'
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
@@ -72,5 +76,26 @@ dependencies {
 
     //Authentication
     implementation 'com.google.firebase:firebase-auth-ktx'
+
+    //Dagger Hilt
+    implementation "com.google.dagger:hilt-android:2.42"
+    kapt "com.google.dagger:hilt-android-compiler:2.42"
+
+    //Room
+    implementation "androidx.room:room-runtime:2.6.0-alpha01"
+    kapt "androidx.room:room-compiler:2.6.0-alpha01"
+    //Coroutine
+    implementation "androidx.room:room-ktx:2.5.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
+
+    //Glide
+    implementation 'com.github.bumptech.glide:glide:4.13.2'
+
+    implementation 'com.google.android.material:material:1.8.0'
+
+
+    //RealTime Database
+    implementation 'com.google.firebase:firebase-database-ktx'
+
 
 }

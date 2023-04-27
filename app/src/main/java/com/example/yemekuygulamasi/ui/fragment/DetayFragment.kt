@@ -68,10 +68,11 @@ class DetayFragment : Fragment() {
 
                     if (sayac == 0){
                         Snackbar.make(it,"Sepete ${gelenYemek.yemek_adi}  Eklendi",Snackbar.LENGTH_SHORT).show()
+
                     }else{
                         Snackbar.make(it," Sepeteki ${gelenYemek.yemek_adi} Güncellendi.",Snackbar.LENGTH_SHORT).show()
-                    }
 
+                    }
 
             }
 

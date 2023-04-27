@@ -18,10 +18,10 @@ class SignInActivity : AppCompatActivity() {
         binding = ActivitySignInBinding.inflate(layoutInflater)
         auth = Firebase.auth
         val current=auth.currentUser
-       /* if(current != null){
+        if(current != null){
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
-        }*/
+        }
         binding.buttonGirisYap.setOnClickListener {
             val email= binding.txtEmail.text.toString()
             val sifre = binding.txtSifre.text.toString()

@@ -1,6 +1,7 @@
 package com.example.yemekuygulamasi.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.example.yemekuygulamasi.data.entitiy.Sepet
 import com.example.yemekuygulamasi.databinding.FragmentSepetBinding
 import com.example.yemekuygulamasi.ui.adapter.SepetAdapter
 import com.example.yemekuygulamasi.ui.viewmodel.SepetViewmodel
+import com.google.android.material.snackbar.Snackbar
 
 
 class SepetFragment : Fragment() {
@@ -30,13 +32,16 @@ class SepetFragment : Fragment() {
 
 
         viewmodel.sepetler.observe(viewLifecycleOwner){
-            val adapter = SepetAdapter(requireContext(),it,viewmodel)
+
+            val adapter = SepetAdapter(requireContext(),it,viewmodel,requireActivity())
             binding.sepetAdapter=adapter
+            Log.e("Size",adapter.itemCount.toString())
+
             val liste = it
             val tumSepet = viewmodel.sepetler.value!!
             binding.textViewSepetToplam.text = sepetToplamFiyat(tumSepet,tumSepet.size).toString() + " ₺"
             val toplam =binding.textViewSepetToplam.text.toString()
-
+            binding.buttonDevam.text="Devam - ${adapter.itemCount} adet ürün"
             binding.buttonDevam.setOnClickListener {
                 if(liste.size ==0 || liste.size<1){
                     Toast.makeText(requireContext(),"Lütfen sepete en az 1 yiyecek ekleyiniz",Toast.LENGTH_SHORT).show()
@@ -48,7 +53,21 @@ class SepetFragment : Fragment() {
             }
 
         }
+        binding.imageView7.setOnClickListener {
+            val snackbar = Snackbar.make(it, "Sepet Boşaltılsın mı?", Snackbar.LENGTH_LONG)
+            snackbar.setAction("Evet") {
+              sepetiBosalt()
+            }
+            snackbar.addCallback(object : Snackbar.Callback() {
+                override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                    if (event == DISMISS_EVENT_TIMEOUT || event == DISMISS_EVENT_SWIPE) {
+                        // Hayır seçeneği tıklandığında yapılacak işlemler
+                    }
+                }
+            })
+            snackbar.show()
 
+        }
 
         return binding.root
     }
@@ -71,6 +90,10 @@ class SepetFragment : Fragment() {
         }
 
         return toplamFiyat
+    }
+
+    fun sepetiBosalt(){
+        viewmodel.sepetiBosalt()
     }
 
 

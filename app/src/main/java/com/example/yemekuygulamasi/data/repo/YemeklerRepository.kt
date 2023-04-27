@@ -126,6 +126,7 @@ class YemeklerRepository {
         })
     }
 
+
     fun azalanFiyat(){
         ydao.tumYemekler().enqueue(object :Callback<YemekCevap>{
             override fun onResponse(call: Call<YemekCevap>?, response: Response<YemekCevap>){
@@ -136,6 +137,15 @@ class YemeklerRepository {
             }
             override fun onFailure(call: Call<YemekCevap>?, t: Throwable?) {}
         })
+    }
+    fun ara(aramaKelimesi:String){
+        if (aramaKelimesi.length == 0){
+            yemekleriYukle()
+        }else{
+            yemeklerListesi.value = yemeklerListesi.value!!.filter { yemekler ->
+                yemekler.yemek_adi.lowercase().contains(aramaKelimesi.lowercase()) }
+            Log.e("yemeklerlistesi",yemeklerListesi.value.toString())
+        }
     }
 
 

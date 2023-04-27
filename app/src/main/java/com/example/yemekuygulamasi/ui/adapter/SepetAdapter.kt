@@ -1,20 +1,23 @@
 package com.example.yemekuygulamasi.ui.adapter
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.yemekuygulamasi.R
 import com.example.yemekuygulamasi.data.entitiy.Sepet
 import com.example.yemekuygulamasi.databinding.RvAnasayfaItemBinding
 import com.example.yemekuygulamasi.databinding.RvSepetItemBinding
+import com.example.yemekuygulamasi.databinding.RvSiparisDetayItemBinding
 import com.example.yemekuygulamasi.ui.viewmodel.SepetViewmodel
 import com.google.android.material.snackbar.Snackbar
 import com.squareup.picasso.Picasso
 
-class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: SepetViewmodel):RecyclerView.Adapter<SepetAdapter.ViewHolder>() {
+class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: SepetViewmodel,var activity:Activity):RecyclerView.Adapter<SepetAdapter.ViewHolder>() {
     inner class ViewHolder(var binding:RvSepetItemBinding):RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -35,7 +38,7 @@ class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: Sepe
         val url="http://kasimadalan.pe.hu/yemekler/resimler/${sepetYemek.yemek_resim_adi}"
 
         if(sepetYemek.yemek_resim_adi !=null){
-            Picasso.get().load(url).into(t.imageViewSepetResim)
+        gorselGoster(url,t)
         }else{
             Log.e("Resim","HAta")
         }
@@ -56,5 +59,9 @@ class SepetAdapter(var mContext:Context,var list:List<Sepet>,var viewModel: Sepe
     }
     fun sil(sepet_yemek_id:Int,kullanici_adi:String){
        viewModel.sil(sepet_yemek_id,kullanici_adi)
+    }
+    fun gorselGoster(url:String,binding: RvSepetItemBinding){
+        Glide.with(activity).load(url).override(150,150).into(binding.imageViewSepetResim)
+
     }
 }

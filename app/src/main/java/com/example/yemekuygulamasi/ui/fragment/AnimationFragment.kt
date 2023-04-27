@@ -25,7 +25,7 @@ class AnimationFragment : Fragment() {
             }
 
             override fun onFinish() {
-                Navigation.findNavController(binding.animationView).navigate(R.id.toAnasayfaFromAnim)
+              //  Navigation.findNavController(binding.animationView).navigate(R.id.toAnasayfaFromAnim)
 
             }
         }

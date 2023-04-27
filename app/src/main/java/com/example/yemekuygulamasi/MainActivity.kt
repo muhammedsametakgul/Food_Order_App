@@ -1,26 +1,33 @@
 package com.example.yemekuygulamasi
 
-import android.content.res.ColorStateList
+
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.core.content.ContextCompat
+import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.yemekuygulamasi.databinding.ActivityMainBinding
-import com.google.android.material.bottomnavigation.LabelVisibilityMode
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.yemekuygulamasi.ui.BadgeBox
+import com.google.android.material.badge.BadgeDrawable
+import com.google.android.material.badge.BadgeUtils
+import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.navigation.NavigationBarView
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(){
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView2) as NavHostFragment
+
+
+        val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
-        binding.bottomnavigationview.background=null
-        binding.bottomnavigationview.labelVisibilityMode = LabelVisibilityMode.LABEL_VISIBILITY_LABELED
+       // binding.bottomnavigationview.background=null
+        binding.bottomnavigationview.labelVisibilityMode = NavigationBarView.LABEL_VISIBILITY_LABELED
 
 
         binding.bottomnavigationview.setOnNavigationItemSelectedListener { item ->
@@ -33,9 +40,19 @@ class MainActivity : AppCompatActivity() {
                     navController.navigate(R.id.sepetFragment)
                     true
                 }
+                R.id.favoriler ->{
+                    navController.navigate(R.id.favorilerFragment)
+                    true
+                }
+                R.id.profil ->{
+                    navController.navigate(R.id.profilFragment)
+                    true
+                }
                 else -> false
             }
         }
 
     }
+
+
 }

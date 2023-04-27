@@ -71,7 +71,7 @@
             android:id="@+id/imageViewCard"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginEnd="32dp"
             android:src="@drawable/mastercard"
             android:visibility="invisible"
@@ -83,11 +83,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
+            android:layout_marginTop="12dp"
             android:layout_marginBottom="4dp"
             android:text="Kart Numarası"
             android:textColor="@color/text"
             app:layout_constraintBottom_toTopOf="@+id/txtOdemeKartNo"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/textView5"
@@ -125,11 +127,11 @@
 
     <EditText
         android:id="@+id/editTextTextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginStart="31dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
         android:layout_marginTop="9dp"
-        android:layout_marginEnd="170dp"
+        android:layout_marginEnd="100dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="Ad Soyad"
@@ -145,10 +147,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="33dp"
         android:layout_marginTop="33dp"
-        android:layout_marginEnd="168dp"
+        android:layout_marginEnd="100dp"
         android:ems="10"
         android:hint="Kart Numaranız"
         android:inputType="number"
+        android:maxLength="16"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -158,16 +161,18 @@
         android:id="@+id/buttonOdemeTamamla"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="24dp"
+        android:backgroundTint="@color/toolbar"
         android:text="Ödemeyi Tamamla"
+        android:textColor="@color/toolbar_yazi"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.144"
+        app:layout_constraintHorizontal_bias="0.504"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextCvv" />
 
     <EditText
         android:id="@+id/editTextYil"
-        android:layout_width="92dp"
+        android:layout_width="100dp"
         android:layout_height="43dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="23dp"
@@ -180,7 +185,7 @@
 
     <EditText
         android:id="@+id/editTextAy"
-        android:layout_width="92dp"
+        android:layout_width="100dp"
         android:layout_height="43dp"
         android:layout_marginStart="31dp"
         android:layout_marginTop="24dp"
@@ -195,7 +200,7 @@
 
     <EditText
         android:id="@+id/editTextCvv"
-        android:layout_width="78dp"
+        android:layout_width="80dp"
         android:layout_height="48dp"
         android:layout_marginStart="32dp"
         android:layout_marginTop="24dp"
@@ -203,6 +208,7 @@
         android:hint="CVV"
         android:inputType="number"
         android:maxLength="3"
+        android:password="true"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextAy" />
 

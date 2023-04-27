@@ -1,5 +1,6 @@
 package com.example.yemekuygulamasi.ui.fragment
 
+import android.os.Build
 import android.os.Bundle
 import android.os.Handler
 import android.text.Editable
@@ -10,20 +11,32 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.yemekuygulamasi.R
+import com.example.yemekuygulamasi.data.entitiy.Siparis
+import com.example.yemekuygulamasi.data.repo.AnimasyonRepository
 import com.example.yemekuygulamasi.databinding.FragmentOdemeBinding
 import com.example.yemekuygulamasi.ui.viewmodel.OdemeViewModel
 import com.example.yemekuygulamasi.ui.viewmodel.SepetOnaylaViewModel
+import com.example.yemekuygulamasi.ui.viewmodel.SepetViewmodel
+import com.google.firebase.database.FirebaseDatabase
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 class OdemeFragment : Fragment() {
     private lateinit var binding:FragmentOdemeBinding
     private lateinit var viewModel: OdemeViewModel
+    private lateinit var viewModelSepet : SepetViewmodel
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        var database = FirebaseDatabase.getInstance().reference
+
         binding = FragmentOdemeBinding.inflate(inflater,container,false)
         binding.buttonOdemeTamamla.setOnClickListener {
             if(binding.editTextTextPersonName.text.isEmpty()){
@@ -47,9 +60,23 @@ class OdemeFragment : Fragment() {
                 Toast.makeText(requireContext(),"Cevap Bekleniyor",Toast.LENGTH_SHORT).show()
                 val handler = Handler()
                 handler.postDelayed({
+                    val id = UUID.randomUUID().toString()
+
+                    val tarih = LocalDateTime.now()
+                    val formatter = DateTimeFormatter.ofPattern("HH-ss  dd-MM-yy")
+                    val formatliTarih = tarih.format(formatter)
+
+                    viewModelSepet.sepetler.observe(viewLifecycleOwner){
+                        database.child(id.toString()).setValue(Siparis(id,formatliTarih.toString(),it))
+                    }
+
                     sepetiBosalt()
                     Toast.makeText(requireContext(),"Ödeme Başarılı Afiyet olsun :)",Toast.LENGTH_SHORT).show()
-                    toAnimation(it)
+                    AnimasyonRepository.animasyon(requireContext(),R.layout.custom_alert_dialog)
+                    val handler2 =Handler()
+                    handler2.postDelayed({
+                        toAnimation(it)
+                    },2200)
                 }, 4000)
             }
         }
@@ -75,7 +102,7 @@ class OdemeFragment : Fragment() {
 
     }
     fun toAnimation(view:View){
-        Navigation.findNavController(view).navigate(R.id.toAnimation1)
+        Navigation.findNavController(view).navigate(R.id.toAnasayfaFromOdeme)
     }
     fun sepetiBosalt(){
         viewModel.sepetiBosalt()
@@ -85,6 +112,9 @@ class OdemeFragment : Fragment() {
         super.onCreate(savedInstanceState)
         val temp : OdemeViewModel by viewModels()
         viewModel= temp
+
+        val temp2 : SepetViewmodel by viewModels()
+        viewModelSepet =temp2
     }
 
 }

@@ -26,14 +26,15 @@
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar2"
             android:layout_width="0dp"
-            app:title="@{sepetToolbar}"
             android:layout_height="wrap_content"
             android:background="@color/toolbar"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" >
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="@{sepetToolbar}">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -60,6 +61,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/toolbar2" />
 
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout2"
             android:layout_width="0dp"
@@ -72,12 +74,12 @@
             <Button
                 android:id="@+id/buttonDevam"
                 android:layout_width="290dp"
-                android:layout_height="41dp"
+                android:layout_height="0dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginBottom="8dp"
+                android:layout_marginBottom="4dp"
+                android:backgroundTint="#272727"
                 android:text="Devam"
                 android:textColor="@color/toolbar_yazi"
-                android:backgroundTint="#272727"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -94,6 +96,16 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintVertical_bias="0.515" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <ImageView
+            android:id="@+id/imageView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/rvSepet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:srcCompat="@drawable/sil_resim_kirmizi" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

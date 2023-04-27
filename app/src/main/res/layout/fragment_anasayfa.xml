@@ -27,7 +27,6 @@
             android:textAlignment="center"
             android:background="@color/toolbar"
             android:layout_width="0dp"
-            app:menu="@menu/toolbar_menu"
             app:title="@{yemekTool}"
             android:layout_height="wrap_content"
             android:minHeight="?attr/actionBarSize"

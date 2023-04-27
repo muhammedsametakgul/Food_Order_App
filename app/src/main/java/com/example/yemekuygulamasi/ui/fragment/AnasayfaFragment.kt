@@ -1,26 +1,31 @@
 package com.example.yemekuygulamasi.ui.fragment
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import android.view.*
 import androidx.fragment.app.Fragment
-import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SearchView
-import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import com.example.yemekuygulamasi.R
-import com.example.yemekuygulamasi.data.entitiy.YemekCevap
-import com.example.yemekuygulamasi.data.entitiy.Yemekler
+import com.example.yemekuygulamasi.data.entitiy.Favoriler
 import com.example.yemekuygulamasi.databinding.FragmentAnasayfaBinding
+import com.example.yemekuygulamasi.ui.BadgeBox
 import com.example.yemekuygulamasi.ui.adapter.AnasayfaAdapter
 import com.example.yemekuygulamasi.ui.viewmodel.AnasayfaViewmodel
+import com.example.yemekuygulamasi.ui.viewmodel.FavorilerVMF
+import com.example.yemekuygulamasi.ui.viewmodel.FavorilerViewModel
 
 
-class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
+class AnasayfaFragment : Fragment(){
     private lateinit var binding:FragmentAnasayfaBinding
     private lateinit var viewmodel:AnasayfaViewmodel
+    private lateinit var viewmodelFavoriler : FavorilerViewModel
+    private lateinit var list: List<Favoriler>
+    private lateinit var adapter : AnasayfaAdapter
+    private lateinit var badgeBoxInterface: BadgeBox
+
+    @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -28,31 +33,25 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_anasayfa, container, false)
         binding.anasayfaFragment=this
         binding.yemekTool=""
-
-        //viewmodel.yemekleriYukle()
-
-        (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
-
-        requireActivity().addMenuProvider(object : MenuProvider{
-            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
-            menuInflater.inflate(R.menu.toolbar_menu,menu)
-                val item = menu.findItem(R.id.action_ara)
-                val searchView = item.actionView as SearchView
-                searchView.setOnQueryTextListener(this@AnasayfaFragment)
-            }
-
-            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
-                return false
-            }
-        },viewLifecycleOwner,Lifecycle.State.RESUMED)
-
         binding.anasayfaFragment = this
-        viewmodel.yemeklerListesi.observe(viewLifecycleOwner){
-            val adapter =AnasayfaAdapter(requireContext(),it)
-            binding.yemekAdapter=adapter
-        }
+
+
+
+        //badgeBoxInterface.onNumberReceived(5)
 
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        viewmodelFavoriler.favorilerListesi.observe(viewLifecycleOwner){favori->
+            viewmodel.yemeklerListesi.observe(viewLifecycleOwner){yemek->
+                adapter =AnasayfaAdapter(requireContext(),yemek,viewmodelFavoriler,favori,viewmodel)
+                binding.yemekAdapter=adapter
+
+            }
+
+        }
     }
 
 
@@ -61,22 +60,18 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
         super.onCreate(savedInstanceState)
         val tempViewModel : AnasayfaViewmodel by viewModels()
         viewmodel=tempViewModel
+
+        val temp : FavorilerViewModel by viewModels() {
+            FavorilerVMF(requireActivity().application)
+        }
+        viewmodelFavoriler = temp
     }
 
 
-   /*override fun onResume() {
+ /* override fun onResume() {
         super.onResume()
         viewmodel.yemekleriYukle()
     }*/
-    override fun onQueryTextSubmit(query: String): Boolean {
-        viewmodel.ara(query)
-        return true
-    }
-
-    override fun onQueryTextChange(newText: String): Boolean {
-        viewmodel.ara(newText)
-        return true
-    }
 
     fun artanFiyat(){
         viewmodel.artanFiyat()
@@ -84,6 +79,15 @@ class AnasayfaFragment : Fragment(),SearchView.OnQueryTextListener {
     fun azalanFiyat(){
         viewmodel.azalanFiyat()
     }
+
+   /* override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is BadgeBox) {
+            badgeBoxInterface = context
+        } else {
+            throw RuntimeException("$context must implement MyInterface")
+        }
+    }*/
 
 
 

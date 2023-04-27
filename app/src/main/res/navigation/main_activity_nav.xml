@@ -12,6 +12,12 @@
         <action
             android:id="@+id/toDetay"
             app:destination="@id/detayFragment" />
+        <action
+            android:id="@+id/toFavoriler"
+            app:destination="@id/favorilerFragment" />
+        <action
+            android:id="@+id/toProfilFromAnasayfa"
+            app:destination="@id/profilFragment" />
     </fragment>
     <fragment
         android:id="@+id/detayFragment"
@@ -42,12 +48,12 @@
         <action
             android:id="@+id/toOdeme"
             app:destination="@id/odemeFragment" />
-        <action
-            android:id="@+id/toAnimation2"
-            app:destination="@id/animationFragment" />
         <argument
             android:name="sepetonay"
             app:argType="string" />
+        <action
+            android:id="@+id/toAnasayfaFromSepetOnayla"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/odemeFragment"
@@ -55,16 +61,33 @@
         android:label="fragment_odeme"
         tools:layout="@layout/fragment_odeme" >
         <action
-            android:id="@+id/toAnimation1"
-            app:destination="@id/animationFragment" />
+            android:id="@+id/toAnasayfaFromOdeme"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/animationFragment"
         android:name="com.example.yemekuygulamasi.ui.fragment.AnimationFragment"
         android:label="fragment_animation"
-        tools:layout="@layout/fragment_animation" >
+        tools:layout="@layout/fragment_animation" />
+    <fragment
+        android:id="@+id/favorilerFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.FavorilerFragment"
+        android:label="fragment_favoriler"
+        tools:layout="@layout/fragment_favoriler" />
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.ProfilFragment"
+        android:label="ProfilFragment" >
         <action
-            android:id="@+id/toAnasayfaFromAnim"
-            app:destination="@id/anasayfaFragment" />
+            android:id="@+id/toSiparisDetay"
+            app:destination="@id/siparisDetayFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/siparisDetayFragment"
+        android:name="com.example.yemekuygulamasi.ui.fragment.SiparisDetayFragment"
+        android:label="SiparisDetayFragment" >
+        <argument
+            android:name="siparis"
+            app:argType="string" />
     </fragment>
 </navigation>
