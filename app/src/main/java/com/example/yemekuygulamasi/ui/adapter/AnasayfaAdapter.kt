@@ -72,9 +72,7 @@ class AnasayfaAdapter(var mContext: Context, var liste:List<Yemekler>,var favori
                             favorilerViewmodel.favoriEkle(gelenYemek.yemek_id,gelenYemek.yemek_adi,gelenYemek.yemek_resim_adi,gelenYemek.yemek_fiyat)
                             Toast.makeText(mContext,"Ürün  favorilere eklendi",Toast.LENGTH_SHORT).show()
                         }else{
-                            favorilerViewmodel.favoriSil(listeFav.get(i).yemek_id)
-                            Toast.makeText(mContext,"Ürün favorilerden kaldırıldı",Toast.LENGTH_SHORT).show()
-
+                            Toast.makeText(mContext,"Ürün zaten  favorilerde",Toast.LENGTH_SHORT).show()
                         }
                     }
                 }catch (ex:java.lang.Exception){

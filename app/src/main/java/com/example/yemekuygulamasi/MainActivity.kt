@@ -4,6 +4,7 @@ package com.example.yemekuygulamasi
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.core.view.WindowCompat
 import androidx.navigation.NavController
@@ -53,6 +54,4 @@ class MainActivity : AppCompatActivity(){
         }
 
     }
-
-
 }

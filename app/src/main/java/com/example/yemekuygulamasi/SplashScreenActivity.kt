@@ -24,6 +24,7 @@ class SplashScreenActivity : AppCompatActivity() {
             if(auth.currentUser !=null){
                 val intent = Intent(this@SplashScreenActivity,MainActivity::class.java)
                 startActivity(intent)
+finish()
             }else{
                 val intent = Intent(this@SplashScreenActivity,SignInActivity::class.java)
                 startActivity(intent)

@@ -19,4 +19,5 @@ class LoadingDialog(val activity: Activity ) {
     fun isDismiss(){
         isdialog.dismiss()
     }
+
 }

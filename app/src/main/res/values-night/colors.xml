@@ -18,4 +18,6 @@
     <color name="foodies_yazi">#6CBBFA</color>
     <color name="sepet_onayla_textview">#434343</color>
     <color name="sepet_onayla_text">#DADADA</color>
+    <color name="text_input_hint_color">#000000</color>
+
 </resources>

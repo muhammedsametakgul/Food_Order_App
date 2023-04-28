@@ -5,7 +5,7 @@
         <item name="colorControlActivated">@color/toolbar</item>
 
         <!-- inactive thumb color -->
-        <item name="colorSwitchThumbNormal">#000000</item>
+        <item name="colorSwitchThumbNormal">@color/text</item>
 
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">#42221f1f

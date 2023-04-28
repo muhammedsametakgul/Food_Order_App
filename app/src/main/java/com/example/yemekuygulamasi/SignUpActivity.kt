@@ -24,7 +24,7 @@ class SignUpActivity : AppCompatActivity() {
             val sifre1=binding.txtSifre.text.toString()
             val sifre2=binding.txtSifre2.text.toString()
             kayitOl(email,sifre1,sifre2)
-
+            finish()
         }
         setContentView(binding.root)
     }
@@ -33,7 +33,7 @@ class SignUpActivity : AppCompatActivity() {
             if(sifre == sifre2){
                 auth.createUserWithEmailAndPassword(email,sifre).addOnSuccessListener {
 
-                    binding.animationView.visibility= View.VISIBLE
+
                     binding.constraintLayout4.visibility=View.INVISIBLE
                     val handler = Handler()
                     handler.postDelayed({

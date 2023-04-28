@@ -17,22 +17,34 @@ class SignInActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignInBinding.inflate(layoutInflater)
         auth = Firebase.auth
+
+
         val current=auth.currentUser
         if(current != null){
             val intent = Intent(this,MainActivity::class.java)
             startActivity(intent)
         }
-        binding.buttonGirisYap.setOnClickListener {
+        binding.btnGirisYap.setOnClickListener {
             val email= binding.txtEmail.text.toString()
             val sifre = binding.txtSifre.text.toString()
             Log.e("email and sifre",email+sifre)
             girisYap(email, sifre)
+            finish()
         }
         binding.txtHesapOlustur.setOnClickListener {
             val intent=Intent(this,SignUpActivity::class.java)
             startActivity(intent)
         }
+
+
+
+
+        binding.txtSifremiUnuttum.setOnClickListener {
+        val intent = Intent(this,SifreSifirlamaActivity::class.java)
+            startActivity(intent)
+        }
         setContentView(binding.root)
+
     }
 
     fun girisYap(email:String,sifre:String){

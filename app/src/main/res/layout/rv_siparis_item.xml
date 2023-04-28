@@ -17,6 +17,7 @@
         <androidx.cardview.widget.CardView
             android:id="@+id/cardViewSiparis"
             android:layout_width="match_parent"
+            android:layout_margin="5dp"
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,7 +34,7 @@
                     android:layout_marginTop="8dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:srcCompat="@drawable/favorite_resim" />
+                    app:srcCompat="@drawable/foodieslogo" />
 
                 <TextView
                     android:id="@+id/textView15"
