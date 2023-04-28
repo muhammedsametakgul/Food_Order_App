@@ -18,6 +18,7 @@
             android:id="@+id/cardViewSiparis"
             android:layout_width="match_parent"
             android:layout_margin="5dp"
+            app:cardCornerRadius="10dp"
             android:layout_height="match_parent">
 
             <androidx.constraintlayout.widget.ConstraintLayout
