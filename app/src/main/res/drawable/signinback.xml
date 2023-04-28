@@ -4,5 +4,5 @@
     android:topRightRadius="40dp"
     android:topLeftRadius="40dp"/>
 <solid
-    android:color="@color/toolbar_yazi"/>
+    android:color="@color/toolbar"/>
 </shape>

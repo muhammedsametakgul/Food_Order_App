@@ -2,7 +2,7 @@
 <resources>
     <style name="SCBSwitch" parent="Theme.MaterialComponents">
         <!-- active thumb & track color (30% transparency) -->
-        <item name="colorControlActivated">#FFC801</item>
+        <item name="colorControlActivated">@color/toolbar</item>
 
         <!-- inactive thumb color -->
         <item name="colorSwitchThumbNormal">#000000</item>

@@ -1,6 +1,7 @@
 package com.example.yemekuygulamasi.ui.fragment
 
 import android.os.Bundle
+import android.os.Handler
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -12,10 +13,15 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.Navigation
 import com.example.yemekuygulamasi.R
 import com.example.yemekuygulamasi.data.entitiy.Sepet
+import com.example.yemekuygulamasi.data.entitiy.Siparis
+import com.example.yemekuygulamasi.data.repo.AnimasyonRepository
 import com.example.yemekuygulamasi.databinding.FragmentSepetBinding
 import com.example.yemekuygulamasi.ui.adapter.SepetAdapter
 import com.example.yemekuygulamasi.ui.viewmodel.SepetViewmodel
 import com.google.android.material.snackbar.Snackbar
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+import java.util.*
 
 
 class SepetFragment : Fragment() {
@@ -53,19 +59,22 @@ class SepetFragment : Fragment() {
             }
 
         }
-        binding.imageView7.setOnClickListener {
-            val snackbar = Snackbar.make(it, "Sepet Boşaltılsın mı?", Snackbar.LENGTH_LONG)
+        binding.imageView7.setOnClickListener {view->
+            val snackbar = Snackbar.make(view, "Sepet Boşaltılsın mı?", Snackbar.LENGTH_LONG)
             snackbar.setAction("Evet") {
-              sepetiBosalt()
+             sepetiBosalt()
+             Toast.makeText(requireContext(),"Sepet Boşaltıldı",Toast.LENGTH_SHORT).show()
+             Navigation.findNavController(view).navigate(R.id.toAnasayfaFromSepet)
+
             }
             snackbar.addCallback(object : Snackbar.Callback() {
                 override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
                     if (event == DISMISS_EVENT_TIMEOUT || event == DISMISS_EVENT_SWIPE) {
-                        // Hayır seçeneği tıklandığında yapılacak işlemler
                     }
                 }
             })
             snackbar.show()
+
 
         }
 

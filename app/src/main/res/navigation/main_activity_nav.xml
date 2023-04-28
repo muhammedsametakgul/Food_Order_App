@@ -40,6 +40,9 @@
         <action
             android:id="@+id/toSepetOnayla"
             app:destination="@id/sepetOnaylaFragment" />
+        <action
+            android:id="@+id/toAnasayfaFromSepet"
+            app:destination="@id/anasayfaFragment" />
     </fragment>
     <fragment
         android:id="@+id/sepetOnaylaFragment"

@@ -14,6 +14,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
+            android:background="@color/back"
+
             android:layout_height="wrap_content">
 
             <EditText
@@ -30,6 +32,8 @@
                 android:inputType="textPersonName"
                 android:padding="8dp"
                 android:textAlignment="inherit"
+                android:textColor="@color/sepet_onayla_text"
+                android:textColorHint="@color/sepet_onayla_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
@@ -49,6 +53,8 @@
                 android:inputType="textMultiLine|textPersonName"
                 android:padding="8dp"
                 android:textAlignment="textStart"
+                android:textColor="@color/sepet_onayla_text"
+                android:textColorHint="@color/sepet_onayla_text"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="parent"
@@ -114,9 +120,9 @@
                 android:layout_marginStart="15dp"
                 android:layout_marginTop="200dp"
                 android:layout_marginEnd="15dp"
-                android:backgroundTint="#292929"
+                android:backgroundTint="@color/toolbar"
                 android:text="Sepeti Onayla"
-                android:textColor="@color/toolbar_yazi"
+                android:textColor="@color/black"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
@@ -125,7 +131,6 @@
                 android:id="@+id/switch1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-
                 android:layout_marginStart="5dp"
                 android:layout_marginTop="20dp"
                 android:text="Çatal Kaşık  İstemiyorum"
@@ -142,7 +147,7 @@
                 android:layout_marginTop="20dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-                app:srcCompat="@drawable/catal_bicak_resim" />
+                app:srcCompat="@drawable/catalbicak" />
 
             <TextView
                 android:id="@+id/txtGetirme"

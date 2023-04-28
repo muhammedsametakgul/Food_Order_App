@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.navigation.fragment.navArgs
 import com.example.yemekuygulamasi.R
 import com.example.yemekuygulamasi.data.entitiy.Sepet
@@ -23,6 +24,9 @@ import com.google.gson.annotations.SerializedName
 class SiparisDetayFragment : Fragment() {
     private  lateinit var binding : FragmentSiparisDetayBinding
     var listSiparis =ArrayList<Sepet>()
+    private  var toplam =ArrayList<Int>()
+    private var adet = ArrayList<Int>()
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -46,12 +50,14 @@ class SiparisDetayFragment : Fragment() {
                     val kullanici_adi = i.child("kullanici_adi").value.toString()
                     val k1 = Sepet(sepet_yemek_id, yemek_adi, yemek_resim_adi, fiyat, yemek_siparis_adet, kullanici_adi)
                     listSiparis.add(k1)
-
+                    toplam.add(fiyat)
+                    adet.add(yemek_siparis_adet)
                 }
-
+                val siparisToplam=toplamSiparis(toplam,adet)
+                binding.txtToplamSiparis.text="Toplam Siparis Tutarı : $siparisToplam ₺"
                 val adapter = SiparisDetayAdapter(requireContext(),listSiparis,requireActivity())
                 binding.siparisDetayAdater = adapter
-                adapter.notifyDataSetChanged() // Veriler güncellendiğinde adapter'ı yenileyin
+                adapter.notifyDataSetChanged()
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -59,10 +65,15 @@ class SiparisDetayFragment : Fragment() {
             }
         })
 
-
-        //val adapter = ProfilAdapter(requireContext())
-
         return binding.root
+    }
+    fun toplamSiparis(fiyatlar : ArrayList<Int>,adet : ArrayList<Int>):Int{
+        var siparis =0
+        for (i in 0..fiyatlar.size-1){
+            val fiyat = fiyatlar[i] * adet[i]
+            siparis = fiyat + siparis
+        }
+        return siparis
     }
 
 

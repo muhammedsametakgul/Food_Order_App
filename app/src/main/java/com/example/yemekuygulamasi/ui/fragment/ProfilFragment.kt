@@ -61,7 +61,7 @@ class ProfilFragment : Fragment() {
                     override fun run() {
                       loading.isDismiss()
                     }
-                },1000)
+                },400)
                 binding.txtEmailProfil.text = auth.currentUser!!.email
                 val adapter =ProfilAdapter(requireContext(),listSiparis)
                 binding.siparisAdapter = adapter
@@ -69,7 +69,6 @@ class ProfilFragment : Fragment() {
 
             }
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
             }
 
         }
@@ -80,7 +79,6 @@ class ProfilFragment : Fragment() {
             logOut(auth)
 
         }
-        //val adapter = ProfilAdapter(requireContext())
         return binding.root
     }
 
@@ -88,7 +86,7 @@ class ProfilFragment : Fragment() {
         auth.signOut()
         val builder = AlertDialog.Builder(requireContext())
 
-        builder.setMessage("Eylemi gerçekleştirmek istediğinize emin misiniz?")
+        builder.setMessage("Çıkış yapmak istediğinize emin misiniz?")
 
         builder.setPositiveButton("Evet") { dialog, which ->
             val intent = Intent(requireContext(),SignInActivity::class.java)
@@ -96,8 +94,6 @@ class ProfilFragment : Fragment() {
         }
 
         builder.setNegativeButton("Hayır") { dialog, which ->
-            // Hayır'a tıklandığında yapılacak işlemler burada yer alacak
-            // Örneğin, işlemi iptal etmek veya bir işlemi reddetmek gibi
         }
 
         val dialog = builder.create()

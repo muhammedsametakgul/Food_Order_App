@@ -78,6 +78,7 @@ class SepetOnaylaFragment : Fragment() {
                             val handler2 =Handler()
                             handler2.postDelayed({
                                 sepetiBosalt()
+                                Toast.makeText(requireContext(),"Ödeme Başarılı Afiyet olsun :)",Toast.LENGTH_SHORT).show()
                                 Navigation.findNavController(it).navigate(R.id.toAnasayfaFromSepetOnayla)
 
                             },2200)

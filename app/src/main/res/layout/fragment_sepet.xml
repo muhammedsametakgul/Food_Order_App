@@ -19,8 +19,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E8E6E6"
-
+        android:background="@color/back"
         tools:context=".ui.fragment.SepetFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -77,9 +76,9 @@
                 android:layout_height="0dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginBottom="4dp"
-                android:backgroundTint="#272727"
+                android:backgroundTint="@color/toolbar"
                 android:text="Devam"
-                android:textColor="@color/toolbar_yazi"
+                android:textColor="@color/black"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent" />
 
@@ -89,8 +88,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="32dp"
                 android:textSize="20sp"
-
                 android:textStyle="bold"
+                android:textColor="@color/text"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -99,8 +98,8 @@
 
         <ImageView
             android:id="@+id/imageView7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toTopOf="@+id/rvSepet"

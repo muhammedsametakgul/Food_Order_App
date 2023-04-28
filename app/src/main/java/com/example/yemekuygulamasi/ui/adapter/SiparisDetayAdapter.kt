@@ -30,9 +30,9 @@ class SiparisDetayAdapter(var mContext : Context, var list: ArrayList<Sepet>,var
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
        val gelenSiparis = list.get(position)
         val t = holder.binding
-        t.textViewAdet.text=gelenSiparis.yemek_siparis_adet.toString()
+        t.textViewAdet.text="${gelenSiparis.yemek_siparis_adet.toString()} adet"
         t.textViewSepetYemekAd.text=gelenSiparis.yemek_adi
-        t.textViewSepetFiyat.text=gelenSiparis.yemek_fiyat.toString()
+        t.textViewSepetFiyat.text="${gelenSiparis.yemek_fiyat.toString()} ₺"
         val url = "http://kasimadalan.pe.hu/yemekler/resimler/${gelenSiparis.yemek_resim_adi}"
 
         gorselGoster(url,t)

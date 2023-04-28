@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/back"
+
     android:layout_height="match_parent"
     tools:context=".ui.fragment.OdemeFragment">
 
@@ -136,6 +138,7 @@
         android:ems="10"
         android:hint="Ad Soyad"
         android:inputType="textPersonName"
+        android:textColorHint="@color/sepet_onayla_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -152,6 +155,7 @@
         android:hint="Kart Numaranız"
         android:inputType="number"
         android:maxLength="16"
+        android:textColorHint="@color/sepet_onayla_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -180,6 +184,7 @@
         android:hint="Yıl"
         android:inputType="date"
         android:maxLength="4"
+        android:textColorHint="@color/sepet_onayla_text"
         app:layout_constraintStart_toEndOf="@+id/textView2"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
 
@@ -194,6 +199,7 @@
         android:hint="Ay"
         android:inputType="date"
         android:maxLength="2"
+        android:textColorHint="@color/sepet_onayla_text"
         app:layout_constraintEnd_toStartOf="@+id/textView2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
@@ -209,6 +215,7 @@
         android:inputType="number"
         android:maxLength="3"
         android:password="true"
+        android:textColorHint="@color/sepet_onayla_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextAy" />
 

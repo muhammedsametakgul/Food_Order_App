@@ -10,12 +10,12 @@
 
     <color name="toolbar">#6CBBFA</color>
     <color name="toolbar_yazi">#000000</color>
-    <color name="text">#000000</color>
-    <color name="credit">#EDEDED</color>
-    <color name="back">#F8F6F6</color>
-    <color name="detay_color">#000000</color>
-    <color name="detay_back">#E8E6E6</color>
-    <color name="foodies_yazi">#000000</color>
-    <color name="sepet_onayla_textview">#FAF9F9</color>
-    <color name="sepet_onayla_text">#000000</color>
+    <color name="text">#FFFFFF</color>
+    <color name="credit">#2B2B2B</color>
+    <color name="back">#000000</color>
+    <color name="detay_color">#FAFAFA</color>
+    <color name="detay_back">#3E3E3E</color>
+    <color name="foodies_yazi">#6CBBFA</color>
+    <color name="sepet_onayla_textview">#434343</color>
+    <color name="sepet_onayla_text">#DADADA</color>
 </resources>

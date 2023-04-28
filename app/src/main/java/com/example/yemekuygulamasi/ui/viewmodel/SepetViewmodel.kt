@@ -1,6 +1,7 @@
 package com.example.yemekuygulamasi.ui.viewmodel
 
 import android.util.Log
+import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.yemekuygulamasi.data.entitiy.Sepet
@@ -29,16 +30,18 @@ class SepetViewmodel:ViewModel() {
     }
 
     fun sepetiBosalt(){
-        val tumYemek = sepetler.value!!
-        for (i in tumYemek){
-            sepettenSil(i.sepet_yemek_id,user)
-            if (tumYemek.indexOf(i) == tumYemek.size-1){
-                sepetler.value = emptyList()
-            }
-            /*if (sepetYemekListesi.value!!.size -1 == 0){
-                sepetYemekListesi.value = emptyList()
-            }*/
-        }
+      if(sepetler.value != null){
+          val tumYemek = sepetler.value!!
+          for (i in tumYemek){
+              sepettenSil(i.sepet_yemek_id,user)
+              if (tumYemek.indexOf(i) == tumYemek.size-1){
+                  sepetler.value = emptyList()
+              }
+              if (sepetler.value!!.size -1 == 0){
+                  sepetler.value = emptyList()
+              }
+          }
+      }
         yrepo.sepetGetir(user)
 
     }
