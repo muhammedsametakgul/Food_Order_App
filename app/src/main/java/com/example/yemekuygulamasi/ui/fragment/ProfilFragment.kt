@@ -38,16 +38,18 @@ class ProfilFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentProfilBinding.inflate(inflater,container,false)
-
         auth = Firebase.auth
         var database = FirebaseDatabase.getInstance().reference
+        //While loading page, it shows loading
         val loading = LoadingDialog(requireActivity())
         loading.startLoading()
 
-
+        //Get data from Firebase Realtime Database
         var getData = object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {
+                //before get, we clear list. Otherwise, each opening this page, it will override on list and will show more items than the list has as real
                 listSiparis.clear()
+                //Get data and put them into listSiparis to give as parameter to ProfilAdapter
             for (i in snapshot.children){
                 val tarih=i.child("tarih").value.toString()
                 val sepet=i.child("sepetListe").value
@@ -56,12 +58,14 @@ class ProfilFragment : Fragment() {
                 listSiparis.add(k1)
 
             }
+                //Close the loading
                 val handler2 = Handler()
                 handler2.postDelayed(object : Runnable{
                     override fun run() {
                       loading.isDismiss()
                     }
                 },400)
+                //Write the email on the textview
                 binding.txtEmailProfil.text = auth.currentUser!!.email
                 val adapter =ProfilAdapter(requireContext(),listSiparis)
                 binding.siparisAdapter = adapter
@@ -72,16 +76,19 @@ class ProfilFragment : Fragment() {
             }
 
         }
+        //Continue get data
         database.addValueEventListener(getData)
         database.addListenerForSingleValueEvent(getData)
 
+        //Log out icon  clicked
         binding.imageView6.setOnClickListener {
             logOut(auth)
-
         }
+
         return binding.root
     }
 
+    //Ask the user if she/he is sure to log out ,and if the answer is yes, it logs out.
     fun logOut(auth : FirebaseAuth){
         auth.signOut()
         val builder = AlertDialog.Builder(requireContext())

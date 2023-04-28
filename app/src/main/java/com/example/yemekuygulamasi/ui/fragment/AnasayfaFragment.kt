@@ -22,9 +22,7 @@ class AnasayfaFragment : Fragment(){
     private lateinit var binding:FragmentAnasayfaBinding
     private lateinit var viewmodel:AnasayfaViewmodel
     private lateinit var viewmodelFavoriler : FavorilerViewModel
-    private lateinit var list: List<Favoriler>
     private lateinit var adapter : AnasayfaAdapter
-    private lateinit var badgeBoxInterface: BadgeBox
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onCreateView(
@@ -34,12 +32,6 @@ class AnasayfaFragment : Fragment(){
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_anasayfa, container, false)
         binding.anasayfaFragment=this
         binding.yemekTool=""
-        binding.anasayfaFragment = this
-
-
-
-        //badgeBoxInterface.onNumberReceived(5)
-
         return binding.root
     }
 
@@ -54,8 +46,6 @@ class AnasayfaFragment : Fragment(){
 
         }
     }
-
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,22 +62,6 @@ class AnasayfaFragment : Fragment(){
  /* override fun onResume() {
         super.onResume()
         viewmodel.yemekleriYukle()
-    }*/
-
-    fun artanFiyat(){
-        viewmodel.artanFiyat()
-    }
-    fun azalanFiyat(){
-        viewmodel.azalanFiyat()
-    }
-
-   /* override fun onAttach(context: Context) {
-        super.onAttach(context)
-        if (context is BadgeBox) {
-            badgeBoxInterface = context
-        } else {
-            throw RuntimeException("$context must implement MyInterface")
-        }
     }*/
 
 

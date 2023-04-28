@@ -27,6 +27,7 @@ class FavorilerFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_favoriler,container,false)
+        //Observe data which comes from Local database with Room
         viewModel.favorilerListesi.observe(viewLifecycleOwner){
             val adapter = FavorilerAdapter(requireContext(),it,requireActivity(),viewModel)
             binding.favorilerAdapter=adapter
@@ -51,10 +52,12 @@ class FavorilerFragment : Fragment() {
         }
         viewModel = temp
     }
+    //Delete All
     fun hepsiniSil(){
         viewModel.favoriHepsiniSil()
     }
 
+    //if one of items is deleted , it provides that our app interface
     override fun onResume() {
         super.onResume()
         viewModel.favoriYukle()

@@ -38,29 +38,34 @@ class SepetOnaylaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var database =FirebaseDatabase.getInstance().reference
-
-
         binding= DataBindingUtil.inflate(inflater,R.layout.fragment_sepet_onayla,container,false)
+        var database =FirebaseDatabase.getInstance().reference
 
         val shape = resources.getDrawable(R.drawable.adress_back) as GradientDrawable
         shape.setStroke(2, Color.BLACK)
+        //Get data from Sepet/Basket
         val bundle:SepetOnaylaFragmentArgs by navArgs()
         val toplam = bundle.sepetonay
-        binding.txtToplamFiyat.text=toplam.toString()
-        binding.txtToplam.text=toplam.toString()
+        //Place data to textviews
+        binding.txtToplamFiyat.text=toplam
+        binding.txtToplam.text=toplam
 
 
 
             binding.buttonSepetiOnayla.setOnClickListener {
+                //Make sure if user input anything to adress
                 if(!binding.editTextTextPersonName2.text.isEmpty()){
+                    //if user choose to pay with online bank card, it will direct to toOdeme
                     if(binding.radioButton2.isChecked){
                         Navigation.findNavController(it).navigate(R.id.toOdeme)
+
                     }else if (binding.radioButton.isChecked || binding.radioButton3.isChecked){
+                        //Otherwise toast message below appear
                         Toast.makeText(requireContext(),"Kontrol Ediliyor",Toast.LENGTH_SHORT).show()
 
                         val handler = Handler()
                         handler.postDelayed({
+                            //Add the data to Order history
                             Toast.makeText(requireContext(),"Sipariş Başarıyla Oluşturuldu! Afiyet olsun :)",Toast.LENGTH_SHORT).show()
                             AnimasyonRepository.animasyon(requireContext(),R.layout.custom_alert_dialog)
                             val id = UUID.randomUUID().toString()

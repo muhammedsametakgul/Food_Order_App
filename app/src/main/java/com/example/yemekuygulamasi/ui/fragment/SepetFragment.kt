@@ -36,18 +36,18 @@ class SepetFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_sepet,container,false)
         binding.sepetFragment = this
 
-
+        //Observe the sepetler list and shows data in interface as dynamically
         viewmodel.sepetler.observe(viewLifecycleOwner){
-
             val adapter = SepetAdapter(requireContext(),it,viewmodel,requireActivity())
             binding.sepetAdapter=adapter
-            Log.e("Size",adapter.itemCount.toString())
 
             val liste = it
             val tumSepet = viewmodel.sepetler.value!!
+            //Total basket price
             binding.textViewSepetToplam.text = sepetToplamFiyat(tumSepet,tumSepet.size).toString() + " ₺"
             val toplam =binding.textViewSepetToplam.text.toString()
             binding.buttonDevam.text="Devam - ${adapter.itemCount} adet ürün"
+            //Pass data to BasketApprove
             binding.buttonDevam.setOnClickListener {
                 if(liste.size ==0 || liste.size<1){
                     Toast.makeText(requireContext(),"Lütfen sepete en az 1 yiyecek ekleyiniz",Toast.LENGTH_SHORT).show()
@@ -59,6 +59,7 @@ class SepetFragment : Fragment() {
             }
 
         }
+        //Clear all basket
         binding.imageView7.setOnClickListener {view->
             val snackbar = Snackbar.make(view, "Sepet Boşaltılsın mı?", Snackbar.LENGTH_LONG)
             snackbar.setAction("Evet") {
@@ -91,6 +92,7 @@ class SepetFragment : Fragment() {
         super.onResume()
         viewmodel.sepetiGetir()
     }
+    //Calculate total price by multiplying the price by the quantity
     fun sepetToplamFiyat(tumSepet: List<Sepet>, sepetsize:Int) : Int {
          toplamFiyat = 0
 
@@ -101,6 +103,7 @@ class SepetFragment : Fragment() {
         return toplamFiyat
     }
 
+    //Clear basket func
     fun sepetiBosalt(){
         viewmodel.sepetiBosalt()
     }

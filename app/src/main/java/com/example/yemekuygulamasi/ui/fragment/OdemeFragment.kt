@@ -35,10 +35,12 @@ class OdemeFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var database = FirebaseDatabase.getInstance().reference
-
+        //Create database object
+        val database = FirebaseDatabase.getInstance().reference
         binding = FragmentOdemeBinding.inflate(inflater,container,false)
+
         binding.buttonOdemeTamamla.setOnClickListener {
+            //Null Control
             if(binding.editTextTextPersonName.text.isEmpty()){
                 Toast.makeText(requireContext(),"Lütfen AD SOYAD alanını doldurunuz",Toast.LENGTH_SHORT).show()
                 return@setOnClickListener
@@ -58,20 +60,21 @@ class OdemeFragment : Fragment() {
             }else{
                 progressPay()
                 Toast.makeText(requireContext(),"Cevap Bekleniyor",Toast.LENGTH_SHORT).show()
+                //while above Toast message appear, handler makes a delay
                 val handler = Handler()
                 handler.postDelayed({
                     val id = UUID.randomUUID().toString()
-
                     val tarih = LocalDateTime.now()
                     val formatter = DateTimeFormatter.ofPattern("HH-ss  dd-MM-yy")
                     val formatliTarih = tarih.format(formatter)
-
+                    //Add items which are in basket list to order history
                     viewModelSepet.sepetler.observe(viewLifecycleOwner){
                         database.child(id.toString()).setValue(Siparis(id,formatliTarih.toString(),it))
                     }
-
+                    //Clear the basket
                     sepetiBosalt()
                     Toast.makeText(requireContext(),"Ödeme Başarılı Afiyet olsun :)",Toast.LENGTH_SHORT).show()
+                    //Shows an animation on Dialog
                     AnimasyonRepository.animasyon(requireContext(),R.layout.custom_alert_dialog)
                     val handler2 =Handler()
                     handler2.postDelayed({
@@ -85,31 +88,37 @@ class OdemeFragment : Fragment() {
     }
 
 
-
+    //Make the imageview  which shows if the card is mastercard or visa  visible
     fun progressPay(){
+        //When button clicked, place information which user entered below on card design
         binding.txtOdemeKartNo.text= binding.editTextNumber.text.toString()
         binding.textViewOdemeAd.text = binding.editTextTextPersonName.text.toString().toUpperCase()
         binding.txtOdemeTarih.text=binding.editTextAy.text.toString()+"/"+binding.editTextYil.text.toString()
         binding.textViewCVV.text="***"
         val first=binding.editTextNumber.text.substring(0,1)
+        //Visa card starts with 4
         if(first=="4"){
             binding.imageViewCard.visibility=View.VISIBLE
             binding.imageViewCard.setImageResource(R.drawable.visaicon)
         }else if(first == "5"){
+            //Mastercard card starts with 5
             binding.imageViewCard.visibility=View.VISIBLE
             binding.imageViewCard.setImageResource(R.drawable.mastercard)
         }
 
     }
+    //After payment, it directs us to MainFragment/AnaSayfa
     fun toAnimation(view:View){
         Navigation.findNavController(view).navigate(R.id.toAnasayfaFromOdeme)
     }
+    //Delete All items in basket( it will be used after payment is successful)
     fun sepetiBosalt(){
         viewModel.sepetiBosalt()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //implemantation viewmodels
         val temp : OdemeViewModel by viewModels()
         viewModel= temp
 

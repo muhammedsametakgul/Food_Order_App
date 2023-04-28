@@ -34,13 +34,17 @@ class SiparisDetayFragment : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentSiparisDetayBinding.inflate(inflater,container,false)
         var database = FirebaseDatabase.getInstance()
+
+        //Get data from profil. When user click one of the items which represent order history, it will direct to this fragment
         val bundle:SiparisDetayFragmentArgs by navArgs()
         val id = bundle.siparis
-
+        //Get data more specific
         val reference = database.getReference("$id/sepetListe")
         reference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                listSiparis.clear() // Önceki verileri silmek için listeyi temizleyin
+                //Clear old data to avoid showing them multiply
+                listSiparis.clear()
+                //Get Data
                 for (i in snapshot.children) {
                     val sepet_yemek_id = i.child("sepet_yemek_id").value.toString().toInt()
                     val yemek_adi = i.child("yemek_adi").value.toString()
@@ -49,10 +53,13 @@ class SiparisDetayFragment : Fragment() {
                     val yemek_siparis_adet = i.child("yemek_siparis_adet").value.toString().toInt()
                     val kullanici_adi = i.child("kullanici_adi").value.toString()
                     val k1 = Sepet(sepet_yemek_id, yemek_adi, yemek_resim_adi, fiyat, yemek_siparis_adet, kullanici_adi)
+                    //added to listSiparis to give SiparisDetayAdapter as parameter
                     listSiparis.add(k1)
+                    //Toplam and adet lists are used to get price and amount in order to calculate total price
                     toplam.add(fiyat)
                     adet.add(yemek_siparis_adet)
                 }
+                //Calc total price
                 val siparisToplam=toplamSiparis(toplam,adet)
                 binding.txtToplamSiparis.text="Toplam Siparis Tutarı : $siparisToplam ₺"
                 val adapter = SiparisDetayAdapter(requireContext(),listSiparis,requireActivity())

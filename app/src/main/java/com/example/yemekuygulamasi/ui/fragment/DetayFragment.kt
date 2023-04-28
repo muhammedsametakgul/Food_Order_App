@@ -21,17 +21,18 @@ import com.squareup.picasso.Picasso
 class DetayFragment : Fragment() {
     private  lateinit var binding:FragmentDetayBinding
     private lateinit var viewModel: DetayViewmodel
-    var sayi = 1
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_detay,container,false)
         binding.yemekDetayFragment = this
+        //Get data from MainPageFragment/AnasayfaFragment
         val bundle:DetayFragmentArgs by navArgs()
         val gelenYemek = bundle.yemek
+        //Match the objects which are both variables. One of them is on Xml and other is on DetayFragment
         binding.yemekNesnesi  = gelenYemek
-        binding.textViewDetayAd.text=gelenYemek.yemek_adi.toString()
+        binding.textViewDetayAd.text=gelenYemek.yemek_adi
 
         viewModel.sayiVM.observe(viewLifecycleOwner){
             binding.adetSayisi=it
@@ -44,6 +45,7 @@ class DetayFragment : Fragment() {
             }
 
                 binding.buttonSepet.setOnClickListener {
+                    //Update the meal if it exits in basket
                     val gelensayi = viewModel.yrepo.sepetListesi.value?.size
                     var gelenSayi2=0
                     if(gelensayi ==null){
@@ -73,9 +75,7 @@ class DetayFragment : Fragment() {
                         Snackbar.make(it," Sepeteki ${gelenYemek.yemek_adi} Güncellendi.",Snackbar.LENGTH_SHORT).show()
 
                     }
-
             }
-
         }
 
         val url="http://kasimadalan.pe.hu/yemekler/resimler/${gelenYemek.yemek_resim_adi}"
@@ -98,13 +98,9 @@ class DetayFragment : Fragment() {
     fun sepeteEkle(yemek_adi:String,yemek_resim_adi:String,yemek_fiyat:Int,yemek_siparis_adet:Int,kullanici_adi:String){
      viewModel.sepeteEkle(yemek_adi,yemek_resim_adi,yemek_fiyat,yemek_siparis_adet,kullanici_adi)
     }
-    fun Nav(it:View){
-        val gecis = DetayFragmentDirections.toSepet()
-        Navigation.findNavController(it).navigate(gecis)
-    }
+
     fun gorselGoster(url:String){
         Picasso.get().load(url).into(binding.imageViewDetayFoto)
-
     }
     fun arttir(){
         viewModel.arttir()
