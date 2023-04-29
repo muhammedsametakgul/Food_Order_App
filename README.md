@@ -37,6 +37,53 @@ Bu projeyi Techcareer tarafından düzenlenen Android Bootcampinden mezun olmak 
 
 [Firebase Realtime Database][2]: Store and sync data with our NoSQL cloud database. Data is synced across all clients in realtime, and remains available when your app goes offline
 
+<h1>Day Mode</h1>
+
+
+|  Sign in       | Sign up  |  Password Reset
+:-------------------------:|:-------------------------:|:-------------------------:| 
+![signin](https://user-images.githubusercontent.com/93324656/235293422-4ed71380-798f-42bb-9bd2-e269378cdc91.png) | ![signup](https://user-images.githubusercontent.com/93324656/235293426-df46f8b2-493c-4e6e-92cb-1e40c401e073.png) | ![passwordreset](https://user-images.githubusercontent.com/93324656/235293427-4f3f98dd-30b1-40b7-a47a-d11d01dc39f4.png)
+
+|  Main Page     | Detail Page  |  Favorite Page
+:-------------------------:|:-------------------------:|:-------------------------:|
+![mainpage](https://user-images.githubusercontent.com/93324656/235293428-aa29c09f-1e2c-4095-b4cd-2f4e7665ccf6.png) | ![detailpage](https://user-images.githubusercontent.com/93324656/235293432-8d9e8a87-bd1c-4fa8-9939-fb321d24ca53.png) | ![favorite](https://user-images.githubusercontent.com/93324656/235293435-a6fb1767-280e-4955-bd65-05f4e5af5547.png)
+
+|  Basket Page  | Order Information Page  | Order Information Page
+:-------------------------:|:-------------------------:|:-------------------------:|
+![basket](https://user-images.githubusercontent.com/93324656/235293437-9080ea28-ec83-4562-87bd-9b81cd7107bb.png) |![basket2](https://user-images.githubusercontent.com/93324656/235293439-56a9f506-e8b4-4b8a-ad8a-16ec600c5d71.png) | ![basket3](https://user-images.githubusercontent.com/93324656/235293441-a0dd5a5f-1f56-4246-b938-202088489f56.png)
+
+
+|  Payment Page  | Profile  | Order Detail
+:-------------------------:|:-------------------------:|:-------------------------:|
+![payment](https://user-images.githubusercontent.com/93324656/235293443-e1a1b494-3e89-4571-a7c7-72032378448d.png) | ![profile](https://user-images.githubusercontent.com/93324656/235293448-e94833fd-dc3f-41f3-89d0-6efdeb9f38d3.png) | ![profiledetail](https://user-images.githubusercontent.com/93324656/235293421-41b3e91a-3fda-4861-bc6a-5191aa14762c.png)
+
+
+
+------
+<h1>Night Mode</h1>
+
+
+|  Sign in       | Sign up  |  Password Reset
+:-------------------------:|:-------------------------:|:-------------------------:|
+![siginn](https://user-images.githubusercontent.com/93324656/235293865-2b6b96b6-ff52-4317-ade7-fdc60ed986f4.png) | ![signupn](https://user-images.githubusercontent.com/93324656/235293838-1b67af7d-0d18-4a44-9c25-ea474269b582.png) | ![passwordresetn](https://user-images.githubusercontent.com/93324656/235293860-73987b12-8614-4786-bd97-f152c651309f.png)
+
+
+|  Main Page     | Detail Page  |  Favorite Page
+:-------------------------:|:-------------------------:|:-------------------------:|
+![mainpagen](https://user-images.githubusercontent.com/93324656/235293855-4ef1e183-b641-4c2d-85d9-580f582602d4.png) | ![orderdetailn](https://user-images.githubusercontent.com/93324656/235293864-8ca301e5-936e-40d8-b2ba-e90beeefa838.png) | ![favoriten](https://user-images.githubusercontent.com/93324656/235293851-b0579c6f-6cfb-4ec0-979b-09fe31295226.png)
+
+
+|  Basket Page  | Order Information Page  | Order Information Page
+:-------------------------:|:-------------------------:|:-------------------------:|
+![basketn](https://user-images.githubusercontent.com/93324656/235293843-cca971c4-7902-4489-b787-2bf6c0419bf7.png) | ![basket2n](https://user-images.githubusercontent.com/93324656/235293842-a8a37153-0169-4557-bdbf-85eb0a681c79.png) | ![basketn3](https://user-images.githubusercontent.com/93324656/235293846-58a49260-7146-429c-82a3-bbf67e2cbefc.png)
+
+
+|  Payment Page  | Profile  | Order Detail
+:-------------------------:|:-------------------------:|:-------------------------:|
+![paymentn](https://user-images.githubusercontent.com/93324656/235293861-137441a4-9f04-4b01-ba64-567219d1a361.png) |![profilen](https://user-images.githubusercontent.com/93324656/235293863-bf7adcd8-faef-4388-9f7e-a65d0de6f25f.png) | ![detayn](https://user-images.githubusercontent.com/93324656/235293841-858e0c86-b965-4035-9b70-872bdc1b6ca5.png)
+
+
+
 
 
 
