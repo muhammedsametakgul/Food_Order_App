@@ -37,6 +37,22 @@ Bu projeyi Techcareer tarafından düzenlenen Android Bootcampinden mezun olmak 
 
 [Firebase Realtime Database][2]: Store and sync data with our NoSQL cloud database. Data is synced across all clients in realtime, and remains available when your app goes offline
 
+### Video:
+---
+
+https://user-images.githubusercontent.com/93324656/235294103-d5f46da5-a507-4dea-8abd-25f587cc01fb.mp4
+
+
+
+
+
+ 
+### Screenshots:
+---
+
+
+
+
 <h1>Day Mode</h1>
 
 
