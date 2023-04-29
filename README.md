@@ -99,9 +99,30 @@ https://user-images.githubusercontent.com/93324656/235294103-d5f46da5-a507-4dea-
 ![paymentn](https://user-images.githubusercontent.com/93324656/235293861-137441a4-9f04-4b01-ba64-567219d1a361.png) |![profilen](https://user-images.githubusercontent.com/93324656/235293863-bf7adcd8-faef-4388-9f7e-a65d0de6f25f.png) | ![detayn](https://user-images.githubusercontent.com/93324656/235293841-858e0c86-b965-4035-9b70-872bdc1b6ca5.png)
 
 
+```
 
+MIT License
 
+Copyright (c) 2023 Muhammed Samet Akgül
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+```
 
 
 
